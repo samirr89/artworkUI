@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArtworkObject } from '../models/artwork.model';
+import { ArtworkObject } from '../modules/feature/models/artwork.model';
 import { HttpLocalClient } from './http-local-client.service';
 
 @Injectable({

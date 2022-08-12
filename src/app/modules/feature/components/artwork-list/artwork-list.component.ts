@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {  FormControl } from '@angular/forms';
 import { Subject, } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Artwork, ArtworkObject, DataType, dateSorterFunction, numberSorterFunction, Paginator, Sorting, SORTING_DATA, stringSorterFunction, StyleTitle } from 'src/app/models/artwork.model';
 import { ArtworkService } from 'src/app/services/artwork.service';
+import { Artwork, ArtworkObject, Paginator, StyleTitle, Sorting, SORTING_DATA, DataType, stringSorterFunction, numberSorterFunction } from '../../models/artwork.model';
 
 @Component({
     selector: 'app-artwork-list',
