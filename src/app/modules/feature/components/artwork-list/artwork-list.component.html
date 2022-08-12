@@ -1,0 +1,43 @@
+<div class="grid-container">
+    <div class="grid-header">
+        <nx-formfield nxFloatLabel="always" nxLabel="Filter">
+            <nx-multi-select [formControl]="multiControl" selectLabel="title" selectValue="name" placeholder="style"
+                [options]="style_titles">
+
+            </nx-multi-select>
+        </nx-formfield>
+        <nx-formfield nxFloatLabel="always" nxLabel="Sort By">
+            <nx-dropdown placeholder="sort by">
+                <nx-dropdown-item (onSelectionChange)="sortChange(option)" *ngFor="let option of options"
+                    [nxValue]="option.value">{{option.text}}</nx-dropdown-item>
+            </nx-dropdown>
+        </nx-formfield>
+
+    </div>
+
+
+
+    <div *ngIf="!isLoading" class="grid-content">
+        <div *ngFor="let artwork of artworkList" class="single-artwork">
+            <div class="img-wrapper">
+                <img *ngIf="artwork.image_id"
+                    src="https://www.artic.edu/iiif/2/{{artwork.image_id}}/full/843,/0/default.jpg">
+                <img *ngIf="!artwork.image_id"
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/32/Art_Institute_of_Chicago_logo.svg">
+            </div>
+            <div class="artwork-text">
+                <h4>{{artwork.title}}</h4>
+                <h6>{{artwork.artist_title}}</h6>
+                <span class="location">{{artwork.location}}</span>
+            </div>
+        </div>
+
+
+    </div>
+    <div *ngIf="!isLoading" class="footer">
+        <nx-pagination [nxCount]="paginator.count" [nxPage]="paginator.page" [nxPerPage]="paginator.perPage"
+            nxType="advanced" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)">
+        </nx-pagination>
+    </div>
+    <nx-spinner *ngIf="isLoading" nxSize="large"></nx-spinner>
+</div>
